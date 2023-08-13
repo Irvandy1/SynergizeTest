@@ -1,33 +1,45 @@
 package config
 
 import (
-	"database/sql"
+	"SynergizeTest/models"
 	"fmt"
+
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
+	"gorm.io/gorm/schema"
 )
 
-func initPostgres() (db *sql.DB, err error) {
+var DB *gorm.DB
+
+func initPostgres() (err error) {
 	const (
 		host     = "localhost"
-		port     = 9000
-		user     = "postgres"
-		password = "password"
-		dbname   = "synergizw"
+		port     = 5432
+		user     = "irvandy2"
+		password = "koinworks"
+		dbname   = "Synergize"
 	)
 
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
 		"password=%s dbname=%s sslmode=disable",
 		host, port, user, password, dbname)
 
-	db, err = sql.Open("postgres", psqlInfo)
-	if err != nil {
-		panic(err)
-	}
-	defer db.Close()
-	err = db.Ping()
+	DB, err = gorm.Open(postgres.Open(psqlInfo), &gorm.Config{NamingStrategy: schema.NamingStrategy{
+		TablePrefix:   "users.", // schema name
+		SingularTable: false,
+	}})
+
 	if err != nil {
 		panic(err)
 	}
 
 	fmt.Println("Successfully connected")
 	return
+}
+
+func Paginate(form models.Pagination) func(db *gorm.DB) *gorm.DB {
+	return func(db *gorm.DB) *gorm.DB {
+		offset := (form.Page - 1) * form.Limit
+		return db.Offset(offset).Limit(form.Limit)
+	}
 }
