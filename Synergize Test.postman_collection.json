@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "d94c81bd-1c6d-4a29-a24f-6cc04ca1e355",
+		"name": "Synergize Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"test3\",\n    \"password\":\"test3\",\n    \"email\":\"test3@gmail.com\",\n    \"phone_number\":\"123456789012\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TopUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\":24,\n    \"amount\":2000000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/topup",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"topup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_name\":\"test3\",\n    \"password\":\"test3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\":21\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserDetail",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\":24\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/user-detail",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user-detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterBank",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bank_code\":\"bca\",\n    \"account_number\":12345,\n    \"account_name\":\"test3\",\n    \"user_id\":23\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/register-bank",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"register-bank"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserList",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"page\":1,\n    \"limit\":10,\n    \"keys\":\"\", //key value : \"user_name\", \"email\", \"phone_number\", \"saldo\", \"bank_code\", \"account_number\", \"account_name\"\n    \"value\":\"test3@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/user-list",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user-list"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
